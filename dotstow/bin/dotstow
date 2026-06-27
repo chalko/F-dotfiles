@@ -9,7 +9,7 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 stowit(){
     local dest=$1
     local source=$2
-    local package$3
+    local package=$3
     shift 3
     if [ -d ${source}/${package} ]; then
       echo  stow -t ${dest} -d ${source} ${package} "$@";
@@ -30,11 +30,11 @@ stowit ~ ${DOT_STOW_HOME}/${PACKAGE} @${HOSTNAME} --no-folding
 # Special handle @config puttiing it in the XDG_CONFIG_HOME
 
 # First stow base config
-stowit ~ ${DOT_STOW_HOME}/${PACKAGE} @config --no-folding
+stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE} @config --no-folding
 
 # Then stow OS config
-stowit ~ ${DOT_STOW_HOME}/${PACKAGE}/@config @{OS} --no-folding
+stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE}/@config @{OS} --no-folding
 
 # Then stow host config
-stowit ~ ${DOT_STOW_HOME}/${PACKAGE}/@config @{HOSNAME} --no-folding
+stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE}/@config @{HOSNAME} --no-folding
 
