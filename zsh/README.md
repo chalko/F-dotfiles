@@ -2,6 +2,7 @@
 
 <!--- Tree block injection -->
     ├── .oh_my.zsh 	# oh-my-zsh configuration
+    ├── .p10k.zsh
     ├── .zsh
     │   ├── aliases.zsh 	# shell aliases
     │   ├── config.zsh 	# shell system configuration
