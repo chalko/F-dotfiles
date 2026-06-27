@@ -3,3 +3,8 @@
 	email = nick@chalko.com
 [init]
 	defaultBranch = main
+
+[alias]
+	co = checkout
+	reword = commit --amend
+
