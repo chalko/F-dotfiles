@@ -2,6 +2,8 @@
 
 
 <!--- Tree block injection -->
-    └── .gitconfig
+    └── @config
+        └── git
+            └── config
 
 
