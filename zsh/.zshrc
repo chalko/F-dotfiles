@@ -17,6 +17,14 @@ do
   source $file
 done
 
+# load zsh config files
+config_files=(${XDG_CONFIG_HOME}/**/*.zshrc(N))
+for file in ${config_files}
+do
+  source $file
+done
+
+
 # eval "$(direnv hook zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
