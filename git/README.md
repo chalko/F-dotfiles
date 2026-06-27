@@ -2,6 +2,6 @@
 
 
 <!--- Tree block injection -->
-    0 directories, 0 files
+    └── .gitconfig
 
 
