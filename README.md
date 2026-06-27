@@ -3,7 +3,7 @@
 # F-dotfiles
 
 
-This is a fork of forked from https://github.com/Kraymer/F-dotfiles
+This is a fork of https://github.com/Kraymer/F-dotfiles
 
 > **/ɛfdɒtfaɪlz/** :
 >
