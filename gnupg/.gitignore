@@ -1,0 +1,8 @@
+# Ignore private keys, public ring, databases, and socket files
+.gnupg/private-keys-v1.d/
+.gnupg/pubring.kbx*
+.gnupg/trustdb.gpg
+.gnupg/random_seed
+.gnupg/reader_*.status
+.gnupg/.#lk*
+.gnupg/S.*
