@@ -30,7 +30,7 @@ When needed, special install instructions are present in package `README.md` fil
 ## Rules
 
 > *Walter -* That rules really tie the repo together, do they not?  
-> *The Dude -* Fuckin A ! <sup id="a2">[2](#f2)</sup>
+> *The Dude -* F!@#$ A ! <sup id="a2">[2](#f2)</sup>
 
 ### Documentation <sup><sub>[f-dotfiles.py](f-dotfiles.py)</sub></sup>
 
