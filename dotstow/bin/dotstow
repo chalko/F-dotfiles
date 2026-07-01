@@ -1,6 +1,6 @@
 #! /bin/sh
 
-DOT_STOW_HOME=~/F-dotfiles
+DOT_STOW_HOME="${DOT_STOW_HOME:-$HOME/F-dotfiles}"
 PACKAGE=$1
 HOSTNAME=`hostname -s`
 OS=`uname`
