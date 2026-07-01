@@ -7,35 +7,35 @@ OS=`uname`
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 stowit(){
-    local dest=$1
-    local source=$2
-    local package=$3
+    local dest="$1"
+    local source="$2"
+    local package="$3"
     shift 3
-    if [ -d ${source}/${package} ]; then
-      echo  stow -t ${dest} -d ${source} ${package} "$@";
-      stow -t ${dest} -d ${source} ${package} "$@";
+    if [ -d "${source}/${package}" ]; then
+      echo  stow -t "${dest}" -d "${source}" "${package}" "$@";
+      stow -t "${dest}" -d "${source}" "${package}" "$@";
     fi
 }
 
 # First stow base package
 # folding is allowed because this dir has a .stow file
-stowit ~ ${DOT_STOW_HOME} ${PACKAGE}
+stowit ~ "${DOT_STOW_HOME}" "${PACKAGE}"
 
 # Then stow OS specific version
-stowit ~ ${DOT_STOW_HOME}/${PACKAGE} @${OS} --no-folding
+stowit ~ "${DOT_STOW_HOME}/${PACKAGE}" "@${OS}" --no-folding
 
 # Then stow host specific version
-stowit ~ ${DOT_STOW_HOME}/${PACKAGE} @${HOSTNAME} --no-folding
+stowit ~ "${DOT_STOW_HOME}/${PACKAGE}" "@${HOSTNAME}" --no-folding
 
-# Special handle @config puttiing it in the XDG_CONFIG_HOME
+# Special handle @config putting it in the XDG_CONFIG_HOME
 
 # First stow base config
-stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE} @config --no-folding
+stowit "${XDG_CONFIG_HOME}" "${DOT_STOW_HOME}/${PACKAGE}" @config --no-folding
 
 # Then stow OS config
-stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE}/@config @${OS} --no-folding
+stowit "${XDG_CONFIG_HOME}" "${DOT_STOW_HOME}/${PACKAGE}/@config" "@${OS}" --no-folding
 
 # Then stow host config
-stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE}/@config @${HOSTNAME} --no-folding
+stowit "${XDG_CONFIG_HOME}" "${DOT_STOW_HOME}/${PACKAGE}/@config" "@${HOSTNAME}" --no-folding
 
 

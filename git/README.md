@@ -7,4 +7,3 @@
             ├── config 	# user-specific git settings and aliases
             └── signed 	# user-specific git settings loaded on main/master branches
 
-

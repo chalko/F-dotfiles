@@ -110,7 +110,7 @@ def make_doc(description=False, sentinel=COMMENT):
             if sentinel in readme:
                 root = os.path.dirname(readme_path)
                 tree = make_tree_doc(root)
-                pattern = r"{}.*?\n(\w+)?\n".format(sentinel)
+                pattern = r"{}(?:\n[ \t]+.*|\n)*".format(re.escape(sentinel))
                 text = re.sub(pattern, format_tree(tree), readme, flags=re.DOTALL)
                 readme_file.seek(0)
                 readme_file.truncate()

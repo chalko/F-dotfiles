@@ -13,7 +13,3 @@ This package manages GnuPG configuration files (gpg.conf, gpg-agent.conf, and sc
         ├── gpg.conf 	# GnuPG configuration options
         └── scdaemon.conf 	# configuration for smartcard daemon
 
-## Requirements
-
-- `gnupg`
-- `pinentry` (e.g., `pinentry-gnome3` on Linux)
