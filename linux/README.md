@@ -2,7 +2,8 @@
 
 
 <!--- Tree block injection -->
-    └── .zsh
-        └── linux
-            └── linux.zsh 	# Linux-specific shell configuration
+    └── @config
+        └── zsh
+            └── linux
+                └── linux.zsh 	# Linux-specific shell configuration
 

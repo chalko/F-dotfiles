@@ -11,7 +11,7 @@ fi
 source ~/.oh_my.zsh
 
 # load zsh config files
-config_files=(~/.zsh/**/*.zsh(N))
+config_files=(${XDG_CONFIG_HOME}/zsh/**/*.zsh(N))
 for file in ${config_files}
 do
   source $file

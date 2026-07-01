@@ -8,7 +8,7 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 # load zsh config files
 
-env_config_files=(~/.zsh/**/*.zshenv(N))
+env_config_files=(${XDG_CONFIG_HOME}/zsh/**/*.zshenv(N))
 if test ! -z "$env_config_files" ;
     then
     for file in ${env_config_files}
