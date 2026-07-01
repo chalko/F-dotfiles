@@ -16,31 +16,37 @@ COMMENT = "<!--- Tree block injection -->"
 
 
 def usage():
-    print(
-        """
+    print("""
 SYNOPSIS
     f-dotfiles.py
 
 DESCRIPTION
     Parse content of README.md files in the repository packages and edit them
     in-place.
-    Search for the sentinel "{}" and if found 
+    Search for the sentinel "{}" and if found
     inject package tree view just after it.
     Files beginning with a comment (like "# this is a comment"), will have the
     comment appended next to their filename in the generated listing.
-    """.format(
-            COMMENT
-        )
-    )
+    """.format(COMMENT))
 
 
 def make_tree(path, full=False):
     """Generate tree for path"""
-    cmd = 'tree {full} -I "README.md|.stow-local-ignore|.gitignore" {path} -a | tail -n +2'.format(
-        path=os.path.basename(path), full="-f" if full else ""
-    )
-    s = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-    tree = s.stdout.read().decode("utf-8")
+    cmd = ["tree", "-I", "README.md|.stow-local-ignore|.gitignore", "-a"]
+    if full:
+        cmd.insert(1, "-f")
+    cmd.append(os.path.basename(path))
+
+    with subprocess.Popen(cmd, stdout=subprocess.PIPE) as s:
+        tree_out = s.stdout.read().decode("utf-8")
+
+    # Simulate `tail -n +2`: remove the first line
+    lines = tree_out.split("\n")
+    if len(lines) > 0:
+        tree = "\n".join(lines[1:])
+    else:
+        tree = tree_out
+
     # Remove files count line at the end
     return tree.split("\n\n")[0] + "\n\n"
 
@@ -50,9 +56,7 @@ def format_tree(text):
     return """{}
     {}
 
-""".format(
-        COMMENT, textwrap.indent(text, " " * 4).strip()
-    )
+""".format(COMMENT, textwrap.indent(text, " " * 4).strip())
 
 
 def extract_descriptions(root):
@@ -91,7 +95,7 @@ def make_tree_doc(root):
     tree = make_tree(root)
     tree_full = make_tree(root, full=True)
 
-    for (branch_full, branch) in zip(tree_full.split("\n"), tree.split("\n")):
+    for branch_full, branch in zip(tree_full.split("\n"), tree.split("\n")):
         if branch_full:
             filename = branch_full.split()[-1].strip()
             if filename in desc:
