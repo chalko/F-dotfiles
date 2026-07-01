@@ -33,8 +33,9 @@ stowit ~ ${DOT_STOW_HOME}/${PACKAGE} @${HOSTNAME} --no-folding
 stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE} @config --no-folding
 
 # Then stow OS config
-stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE}/@config @{OS} --no-folding
+stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE}/@config @${OS} --no-folding
 
 # Then stow host config
-stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE}/@config @{HOSNAME} --no-folding
+stowit "${XDG_CONFIG_HOME}" ${DOT_STOW_HOME}/${PACKAGE}/@config @${HOSTNAME} --no-folding
+
 
