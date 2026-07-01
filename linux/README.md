@@ -4,5 +4,5 @@
 <!--- Tree block injection -->
     └── .zsh
         └── linux
-            └── linux.zsh
+            └── linux.zsh 	# Linux-specific shell configuration
 

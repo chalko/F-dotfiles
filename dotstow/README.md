@@ -1,4 +1,4 @@
-# Dotstos nick's implementation of using stow to manage dot files.
+# Dotstow: Nick's implementation of using stow to manage dot files.
 
 <!--- Tree block injection -->
     └── bin
@@ -11,7 +11,7 @@
 dotstow PACKAGE
 ```
 
-dotstow  uses sto install packages from the ~/F-dotstow direcory it has special handling for the operating system and hostname
+dotstow uses stow to install packages from the ~/F-dotfiles directory. It has special handling for the operating system and hostname.
 
 ```bash
 HOSTNAME=hostname -s`
@@ -21,12 +21,13 @@ OS=`uname`
 Packages are installed in this order
 
 * base
-* ooperating specific
+* operating system specific
 * host specific
-@Config is mapped to XDG_CONFIG_HOME repeating the base/os/host patter
+
+`@config` is mapped to `XDG_CONFIG_HOME`, repeating the base/os/host pattern.
 
 
-## Instalation
+## Installation
 
 Install stow
 

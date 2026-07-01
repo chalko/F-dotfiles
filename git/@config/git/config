@@ -1,3 +1,4 @@
+# config: user-specific git settings and aliases
 [user]
 	name = Nick Chalko
 	email = nick@chalko.com

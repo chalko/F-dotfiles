@@ -7,7 +7,7 @@ This is a fork of https://github.com/Kraymer/F-dotfiles
 
 > **/ɛfdɒtfaɪlz/** :
 >
-> *n.* stands for *Full-fledged-Über-Clean-Kraymer dotfiles.*, an opiniated dotfiles organization scheme based on stow.
+> *n.* stands for *Full-fledged-Über-Clean-Kraymer dotfiles.*, an opinionated dotfiles organization scheme based on stow.
 Great effort is put on self-documentation and ease of maintenance.
 
 
@@ -32,14 +32,14 @@ When needed, special install instructions are present in package `README.md` fil
 > *Walter -* That rules really tie the repo together, do they not?  
 > *The Dude -* Fuckin A ! <sup id="a2">[2](#f2)</sup>
 
-### Documentation <sup><sub>[`f-dotfiles.py`](https://github.com/Kraymer/F-dotfiles/F-dotfiles/blob/master/f-dotfiles.py)
+### Documentation <sup><sub>[f-dotfiles.py](f-dotfiles.py)</sub></sup>
 
 Dotfiles repositories are too often grimoire-like collection of ancient formulas, only usable by their original author.
 
-F-dotfiles avoid this pitfall by paying special attention to packages documentation : run `pre-commit install` to enable [`f-dotfiles.py`](https://github.com/Kraymer/F-dotfiles/blob/master/f-dotfiles.py) hook that ensures that packages `README.md` tree listings are automatically updated when commiting.  
+F-dotfiles avoid this pitfall by paying special attention to packages documentation : run `pre-commit install` to enable [f-dotfiles.py](f-dotfiles.py) hook that ensures that packages `README.md` tree listings are automatically updated when committing.  
 Files descriptions that match the format `# <filename>: description` are extracted too and enrich the tree listing.
 
-Others instructions like install notes and requirements should be manually entered by editing the `README.md` files directly, and can live peacefully alongside auto-generated tree view content. 
+Other instructions like install notes and requirements should be manually entered by editing the `README.md` files directly, and can live peacefully alongside auto-generated tree view content. 
 
 ### Ignore files <sup><sub>[[cf example]](https://github.com/F-dotfiles/F-dotfiles/blob/master/_sublime_text_3/.gitignore)</sub></sup>
 
@@ -52,7 +52,7 @@ Quoting stow [documentation](https://www.gnu.org/software/stow/manual/html_node/
 ### Secret files <sup><sub>[[cf example]](https://github.com/F-dotfiles/F-dotfiles/blob/master/git/.config/git/credentials.example)
 
 Files that contain sensitive information and should not be published are kept secret using package specific `.gitignore` files.
-Because the secret file itself is not tracked, a template is commited instead having same name but with the `.example` suffix appended. This template is intended to serve as a base for edition and can be renamed (removing the suffix) after its content is edited.
+Because the secret file itself is not tracked, a template is committed instead having same name but with the `.example` suffix appended. This template is intended to serve as a base for editing and can be renamed (removing the suffix) after its content is edited.
 
 
 
