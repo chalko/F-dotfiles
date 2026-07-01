@@ -1,0 +1,7 @@
+# Ignore everything in the .ssh directory by default
+.ssh/*
+
+# Whitelist files we want to track
+!.ssh/config
+!.ssh/known_hosts
+!.ssh/*.pub
