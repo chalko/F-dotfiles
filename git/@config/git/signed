@@ -1,0 +1,5 @@
+# signed: user-specific git settings loaded on main/master branches
+[user]
+	signingkey = 0x7A6D992811A9E720
+[commit]
+	gpgsign = true

@@ -2,7 +2,6 @@
 [user]
 	name = Nick Chalko
 	email = nick@chalko.com
-	signingkey = 0x7A6D992811A9E720
 [init]
 	defaultBranch = main
 
@@ -10,6 +9,8 @@
 	co = checkout
 	reword = commit --amend
 
-[commit]
-	gpgsign = true
+[includeIf "onbranch:main"]
+	path = signed
 
+[includeIf "onbranch:master"]
+	path = signed

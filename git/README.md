@@ -4,6 +4,7 @@
 <!--- Tree block injection -->
     └── @config
         └── git
-            └── config 	# user-specific git settings and aliases
+            ├── config 	# user-specific git settings and aliases
+            └── signed 	# user-specific git settings loaded on main/master branches
 
 
