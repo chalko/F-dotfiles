@@ -1,0 +1,8 @@
+#!/bin/bash
+# dotstow: execute dotstow command for a package
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+
+export DOT_STOW_HOME="$WORKSPACE_ROOT"
+exec "$WORKSPACE_ROOT/dotstow/bin/dotstow" "$@"

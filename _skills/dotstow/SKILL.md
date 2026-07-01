@@ -37,11 +37,14 @@ Always structure packages to align with `dotstow` and GNU Stow expectations:
      
      <!--- Tree block injection -->
      ```
-   * Commit the files once so the `f-dotfiles` pre-commit hook runs and auto-generates the directory tree, OR run `python3 f-dotfiles.py` manually.
-
+    * Commit the files once so the `f-dotfiles` pre-commit hook runs and auto-generates the directory tree, OR run the helper script:
+      ```bash
+      ./_skills/dotstow/scripts/f-dotfiles
+      ```
+    
 4. **Verify and Install**:
    * Alert the user to back up any existing files in `~` or `~/.config` that would cause conflicts.
-   * Install the package by running:
+   * Install the package by running the helper script:
      ```bash
-     ./dotstow/bin/dotstow <package_name>
+     ./_skills/dotstow/scripts/dotstow <package_name>
      ```
