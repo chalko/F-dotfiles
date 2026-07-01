@@ -59,6 +59,7 @@ def extract_descriptions(root):
     """Extract descriptions in scripts headers"""
     desc = {}
     header_size = 10
+
     for local_root, dirnames, filenames in os.walk(root):
         for filename in filenames:
             abs_filename = os.path.join(local_root, filename)
@@ -69,15 +70,18 @@ def extract_descriptions(root):
                     except StopIteration:
                         myfile.seek(0)
                         head = myfile.readlines()
-                pattern = re.compile(r"# {}: (.+)".format(filename))
 
-                hit = pattern.search("".join(head))
-                if hit:
-                    desc[
-                        os.path.join(
-                            os.path.basename(root), os.path.relpath(abs_filename, root)
-                        )
-                    ] = hit.group(1)
+                # Check for matches in the header
+                search_str = f"# {filename}: "
+                for line in head:
+                    idx = line.find(search_str)
+                    if idx != -1:
+                        desc[
+                            os.path.join(
+                                os.path.basename(root), os.path.relpath(abs_filename, root)
+                            )
+                        ] = line[idx + len(search_str):].strip()
+                        break # Stop after the first matching description is found
             except UnicodeDecodeError:
                 pass  # binary file
     return desc
