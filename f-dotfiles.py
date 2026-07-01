@@ -104,7 +104,7 @@ def make_tree_doc(root):
     return "\n".join(res)
 
 
-def make_doc(description=False, sentinel=COMMENT):
+def make_doc(sentinel=COMMENT):
     """For each package, insert the directories listing into the README.md
     by updating the block introduced by sentinel
     """
@@ -125,4 +125,4 @@ if __name__ == "__main__":
     if "-h" in sys.argv or "--help" in sys.argv:
         usage()
         exit()
-    make_doc(description=True)
+    make_doc()
