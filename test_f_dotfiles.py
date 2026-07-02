@@ -23,16 +23,20 @@ class TestFDotfiles(unittest.TestCase):
         with open(os.path.join(self.vuln_dir, "c.txt"), "w") as f:
             f.write("c")
 
+        self.test_dir = tempfile.mkdtemp()
+
     def tearDown(self):
-        if os.path.exists(self.test_dir):
-            shutil.rmtree(self.test_dir)
+        if os.path.exists(self.test_dir_safe):
+            shutil.rmtree(self.test_dir_safe)
         if os.path.exists(self.vuln_dir):
             shutil.rmtree(self.vuln_dir)
         if os.path.exists("vuln.txt"):
             os.remove("vuln.txt")
+        if os.path.exists(self.test_dir):
+            shutil.rmtree(self.test_dir)
 
     def test_make_tree_safe_dir(self):
-        tree = f_dotfiles.make_tree(self.test_dir)
+        tree = f_dotfiles.make_tree(self.test_dir_safe)
         self.assertIn("├── a.txt", tree)
         self.assertIn("└── b.txt", tree)
 
