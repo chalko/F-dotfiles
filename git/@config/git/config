@@ -9,8 +9,3 @@
 	co = checkout
 	reword = commit --amend
 
-[includeIf "onbranch:main"]
-	path = signed
-
-[includeIf "onbranch:master"]
-	path = signed
