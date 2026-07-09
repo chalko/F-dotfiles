@@ -9,3 +9,5 @@
 	co = checkout
 	reword = commit --amend
 
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
