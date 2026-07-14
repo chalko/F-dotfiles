@@ -6,6 +6,7 @@ import re
 import sys
 import subprocess
 import textwrap
+import itertools
 
 from glob import glob
 
@@ -69,23 +70,20 @@ def extract_descriptions(root):
             abs_filename = os.path.join(local_root, filename)
             try:
                 with open(abs_filename) as myfile:
-                    try:
-                        head = [next(myfile) for x in range(header_size)]
-                    except StopIteration:
-                        myfile.seek(0)
-                        head = myfile.readlines()
+                    head = itertools.islice(myfile, header_size)
 
-                # Check for matches in the header
-                search_str = f"# {filename}: "
-                for line in head:
-                    idx = line.find(search_str)
-                    if idx != -1:
-                        desc[
-                            os.path.join(
-                                os.path.basename(root), os.path.relpath(abs_filename, root)
-                            )
-                        ] = line[idx + len(search_str):].strip()
-                        break # Stop after the first matching description is found
+                    # Check for matches in the header
+                    search_str = f"# {filename}: "
+                    for line in head:
+                        idx = line.find(search_str)
+                        if idx != -1:
+                            desc[
+                                os.path.join(
+                                    os.path.basename(root),
+                                    os.path.relpath(abs_filename, root),
+                                )
+                            ] = line[idx + len(search_str) :].strip()
+                            break  # Stop after the first matching description is found
             except UnicodeDecodeError:
                 pass  # binary file
     return desc
