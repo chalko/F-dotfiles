@@ -82,10 +82,11 @@ def extract_descriptions(root):
                     if idx != -1:
                         desc[
                             os.path.join(
-                                os.path.basename(root), os.path.relpath(abs_filename, root)
+                                os.path.basename(root),
+                                os.path.relpath(abs_filename, root),
                             )
-                        ] = line[idx + len(search_str):].strip()
-                        break # Stop after the first matching description is found
+                        ] = line[idx + len(search_str) :].strip()
+                        break  # Stop after the first matching description is found
             except UnicodeDecodeError:
                 pass  # binary file
     return desc
@@ -112,14 +113,16 @@ def make_doc(sentinel=COMMENT):
     """For each package, insert the directories listing into the README.md
     by updating the block introduced by sentinel
     """
+    pattern = re.compile(
+        r"{}(?:\n[ \t]+.*|\n)*".format(re.escape(sentinel)), flags=re.DOTALL
+    )
     for readme_path in [os.path.abspath(x) for x in glob("*/README.md")]:
         with open(readme_path, "r+") as readme_file:
             readme = readme_file.read()
             if sentinel in readme:
                 root = os.path.dirname(readme_path)
                 tree = make_tree_doc(root)
-                pattern = r"{}(?:\n[ \t]+.*|\n)*".format(re.escape(sentinel))
-                text = re.sub(pattern, format_tree(tree), readme, flags=re.DOTALL)
+                text = pattern.sub(format_tree(tree), readme)
                 readme_file.seek(0)
                 readme_file.truncate()
                 readme_file.write(text)
