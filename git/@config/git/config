@@ -11,3 +11,6 @@
 
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
+
+[url "ssh://git@gitea.fog.chalko.com:30222/"]
+	pushInsteadOf = https://gitea.fog.chalko.com/
