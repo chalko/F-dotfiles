@@ -6,5 +6,5 @@ This package manages SSH client configurations.
     └── .ssh
         ├── config 	# SSH client configuration
         ├── id_rsa_yubikey.pub
-        └── known_hosts
+        └── known_hosts 	# SSH known hosts
 
